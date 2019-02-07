@@ -14,9 +14,9 @@ class SendMessageModelFormTest(TestCase):
     def setUpTestData(cls):
 
         # create staff user
-        user1 = User.objects.create_user(username='user1', password='!12345678', email='admin@mail.com', is_staff=True)
-        user1.save()
-
+        User.objects.create_user(username='admin', password='!12345678', email='admin@mail.com', is_staff=True)
+        User.objects.create_user(username='user', password='123', email='user@mail.com', is_staff=False)
+        
     def test_labels(self):
         # fields in that form have different labels
         form = SendMessageModelForm()
