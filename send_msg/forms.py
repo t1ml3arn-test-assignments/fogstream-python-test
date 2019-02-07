@@ -13,12 +13,19 @@ class SendMessageModelForm(ModelForm):
     def clean_receiver(self):
 
         data = self.cleaned_data.get("receiver")
-        
+        user = None
+
+        # first check if there is user with given email
         try:
-            User.objects.get(email=data)
+            user = User.objects.get(email=data)
         except User.DoesNotExist:
             raise ValidationError(f'There are no admins with email {data}')
-        
+
+        # then check if user has IS_STAFF = True
+        if not user.is_staff:
+            raise ValidationError(f'There are no admins with email {data}')
+            # TODO update your tests !
+
         return data
 
     class Meta:
