@@ -51,7 +51,7 @@ NOTE: similar actions for `site_auth` application must be made
 
 ### Register model in admin site
 
-- Open `admin.py` in your application's folder
+- Open `admin.py` in yo`EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'` settingur application's folder
 - import your models e.g. `from myapp.models import MyModel`
 - register it with `admin.site.register(MyModel)`
 
@@ -61,7 +61,11 @@ TODO
 
 ### Email backend
 
-TODO
+For testing email sending there is a built-in functionality in Django.
+Anyway, I configure console email backend
+
+- open `settings.py`
+- add `EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'` setting
 
 ## Unit testing
 
