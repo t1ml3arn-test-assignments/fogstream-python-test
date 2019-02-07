@@ -25,5 +25,5 @@ urlpatterns = [
     # more there https://stackoverflow.com/questions/38274769/what-is-the-opposite-of-loginrequiredmixin-how-deny-the-access-to-a-logged-in-u
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('register/', site_auth_views.register, name='register'),
-    path('send-message/', send_msg_views.index, name='sendmsg'),
+    path('send-message/', send_msg_views.send_msg, name='sendmsg'),
 ]

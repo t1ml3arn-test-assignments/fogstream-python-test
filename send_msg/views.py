@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 # Send message view
 @login_required(login_url='/login/')
-def index(request):
+def send_msg(request):
     
     form = None
 
