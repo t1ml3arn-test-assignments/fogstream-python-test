@@ -28,7 +28,7 @@ def send_msg(request):
             user = request.user
             
             msg = form.save(commit=False)
-            msg.date = datetime.datetime.today()
+            msg.date = datetime.datetime.now()
             msg.sender = user
 
             sender_mail = user.email if user.email else f'{user.username}@no.email.com'
