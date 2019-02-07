@@ -47,3 +47,12 @@ class SendMessageModelFormTest(TestCase):
         with self.assertRaises(ValidationError):
             form.clean_receiver()
     
+    def test_receiver_is_not_staff(self):
+        # msg can be sent only to staff
+
+        user_email = 'user@mail.com'
+         
+        form = SendMessageModelForm(data={"receiver": user_email})
+        form.is_valid()
+        with self.assertRaises(ValidationError):
+            form.clean_receiver()
