@@ -24,7 +24,6 @@ class SendMessageModelForm(ModelForm):
         # then check if user has IS_STAFF = True
         if not user.is_staff:
             raise ValidationError(f'There are no admins with email {data}')
-            # TODO update your tests !
 
         return data
 
