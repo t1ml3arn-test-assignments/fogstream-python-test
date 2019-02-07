@@ -42,7 +42,7 @@ class SendMessageModelFormTest(TestCase):
         self.assertEqual(admin_email, clean_receiver)
         
         # bad case - forms gets email which doesnt exist in db
-        form = SendMessageModelForm(data={"receiver": "hello@world"})
+        form = SendMessageModelForm(data={"receiver": "hello@world.com"})
         form.is_valid()
         with self.assertRaises(ValidationError):
             form.clean_receiver()
@@ -56,3 +56,6 @@ class SendMessageModelFormTest(TestCase):
         form.is_valid()
         with self.assertRaises(ValidationError):
             form.clean_receiver()
+
+    # NOTE both test_clean_receiver() test_receiver_is_not_staff
+    # can be simplified by using simple form.is_valid()
