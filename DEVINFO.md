@@ -65,4 +65,12 @@ TODO
 
 ## Unit testing
 
-TODO
+```bash
+cd send_msg
+mkdir tests
+# create an empty file (tells Python that dir is a package)
+copy NUL __init__.py
+```
+
+- write your test in files like `test_something.py`
+- run tests with `py manage.py test`
