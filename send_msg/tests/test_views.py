@@ -27,7 +27,7 @@ class SendMsgViewTest(TestCase):
         response = self.client.get(reverse('sendmsg'))
         self.assertEqual(response.status_code, 200)
 
-    def test_logged_in_template(self):
+    def test_template_exist(self):
         login = self.client.login(username='user1', password='123')
         self.assertTrue(login, "Can't login")
 
