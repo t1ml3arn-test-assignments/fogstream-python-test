@@ -57,7 +57,50 @@ NOTE: similar actions for `site_auth` application must be made
 
 ### Logging to console
 
-TODO
+Add this to settings
+
+```py
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue'
+        }
+    },
+    'formatters': {
+        'main_formatter': {
+            'format': '%(name)s:%(lineno)d: %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_formatter',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': "DEBUG",
+        },
+    }
+}
+```
+
+Use logger in code:
+
+```py
+import logging
+
+logger = logging.getLogger(__name__)
+logger.info('hello there')
+```
 
 ### Email backend
 
