@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.views.generic import RedirectView
 from site_auth import views as site_auth_views
 from send_msg import views as send_msg_views
 
@@ -24,4 +25,5 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name='login'),
     path('register/', site_auth_views.register, name='register'),
     path('send-message/', send_msg_views.send_msg, name='sendmsg'),
+    path('', RedirectView.as_view(url='/register/'))
 ]
