@@ -9,7 +9,7 @@ def is_user_not_logged_in(user):
     return not user.is_authenticated
 
 # Create your views here.
-@user_passes_test(is_user_not_logged_in, login_url='/send-message/')
+@user_passes_test(is_user_not_logged_in, login_url='/send-message/', redirect_field_name=None)
 def register(request):
 
     # if POST - processing a form
