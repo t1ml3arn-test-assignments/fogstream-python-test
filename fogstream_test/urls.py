@@ -21,9 +21,7 @@ from send_msg import views as send_msg_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # TODO replace LoginView bellow to class with logoutrequiredmixin?
-    # more there https://stackoverflow.com/questions/38274769/what-is-the-opposite-of-loginrequiredmixin-how-deny-the-access-to-a-logged-in-u
-    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name='login'),
     path('register/', site_auth_views.register, name='register'),
     path('send-message/', send_msg_views.send_msg, name='sendmsg'),
 ]
