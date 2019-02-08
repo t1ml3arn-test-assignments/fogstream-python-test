@@ -7,10 +7,6 @@ from django.urls import reverse
 import datetime
 from .forms import SendMessageModelForm
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 # Create your views here.
 
 # Send message view
@@ -45,8 +41,6 @@ def send_msg(request):
                 msg.success = True
 
             msg.save()
-            
-            # logger.info('#################################')
 
             # TODO render some info about successed sending ? 
             return HttpResponseRedirect(reverse('sendmsg'))

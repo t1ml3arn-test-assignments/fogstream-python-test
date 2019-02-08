@@ -3,11 +3,6 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from send_msg.models import Message
 
-import logging
-
-logger = logging.getLogger(__name__)
-
-
 class SendMessageModelForm(ModelForm):
 
     def clean_receiver(self):
