@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, SimpleTestCase
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -74,3 +74,9 @@ class LoginViewTest(TestCase):
     def test_redirect_if_login_succeeded(self):
         response = self.client.post(reverse('login'), {"username": "user1", "password": "123"})
         self.assertRedirects(response, reverse('sendmsg'))
+
+class EmptyUrlRedirectTest(SimpleTestCase):
+
+    def test_redirect_to_register(self):
+        response = self.client.get("")
+        self.assertRedirects(response, reverse("register"))
