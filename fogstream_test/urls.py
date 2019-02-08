@@ -25,5 +25,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name='login'),
     path('register/', site_auth_views.register, name='register'),
     path('send-message/', send_msg_views.send_msg, name='sendmsg'),
+    path('logout/', auth_views.LogoutView.as_view(next_page="/login/"), name='logout'),
     path('', RedirectView.as_view(url='/register/'))
 ]

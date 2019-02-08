@@ -9,6 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.get_username }}! | <a href="{% url 'logout' %}?next={% url 'login' %}">Logout</a></p>
+    {% else %}
+        <a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    
     <h1>Fogstream test</h1>
     <hr>
     {% block content %}

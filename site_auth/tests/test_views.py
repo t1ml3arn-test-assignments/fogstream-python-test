@@ -80,3 +80,29 @@ class EmptyUrlRedirectTest(SimpleTestCase):
     def test_redirect_to_register(self):
         response = self.client.get("")
         self.assertRedirects(response, reverse("register"))
+
+class LogoutViewTest(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        User.objects.create_user(username='user', password='123')
+
+    def setUp(self):
+        login = self.client.login(username='user', password='123')
+        self.assertTrue(login, "Cant login")
+
+    def test_redirect_to_login(self):
+        # we have a uer logged-in
+        response = self.client.get(reverse('logout'))
+        self.assertRedirects(response, reverse('login'))
+
+        # redirect for anon user
+        response = self.client.get(reverse('logout'))
+        self.assertRedirects(response, reverse('login'))
+
+    def test_logout_url_exist(self):
+        response = self.client.get(reverse('logout'))
+        self.assertIn(response.status_code, [302,200])
+
+        response = self.client.get('/logout/')
+        self.assertIn(response.status_code, [302,200])
