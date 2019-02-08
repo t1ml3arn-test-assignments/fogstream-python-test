@@ -1,5 +1,5 @@
-from django.test import TestCase, SimpleTestCase
 from django.contrib.auth.models import User
+from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
 # Create your tests here.

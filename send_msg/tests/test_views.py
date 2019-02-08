@@ -1,9 +1,12 @@
-from django.test import TestCase, override_settings
-from django.contrib.auth.models import User
-from django.urls import reverse
 import datetime
-from send_msg.views import send_msg
+
+from django.contrib.auth.models import User
+from django.test import TestCase, override_settings
+from django.urls import reverse
+
 from send_msg.models import Message
+from send_msg.views import send_msg
+
 
 class SendMsgViewTest(TestCase):
     
@@ -78,4 +81,3 @@ class SendMsgViewTest(TestCase):
         self.client.post(reverse('sendmsg'), {"receiver": admin_email, "text": "hello"})
         msg = Message.objects.get(receiver=admin_email)
         self.assertFalse(msg.success)
-    

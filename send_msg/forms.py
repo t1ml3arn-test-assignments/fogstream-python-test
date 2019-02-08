@@ -1,7 +1,9 @@
-from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.forms import ModelForm
+
 from send_msg.models import Message
+
 
 class SendMessageModelForm(ModelForm):
 

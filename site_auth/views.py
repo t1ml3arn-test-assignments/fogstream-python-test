@@ -1,9 +1,9 @@
-from django.shortcuts import render
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import redirect, render
 from django.urls import reverse
+
 
 def is_user_not_logged_in(user):
     return not user.is_authenticated

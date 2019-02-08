@@ -1,13 +1,14 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.core.mail import send_mail
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-from django.urls import reverse
 import datetime
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+
 from .forms import SendMessageModelForm
 
-# Create your views here.
 
 # Send message view
 @login_required(login_url='/login/')

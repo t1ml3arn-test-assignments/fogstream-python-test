@@ -1,9 +1,12 @@
-from django.test import TestCase
+import datetime
+
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from send_msg.models import Message
+from django.test import TestCase
+
 from send_msg.forms import SendMessageModelForm
-import datetime
+from send_msg.models import Message
+
 
 def get_msg(id):
     return Message.objects.get(id=id)
